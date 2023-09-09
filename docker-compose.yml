@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  openvscode:
+    container_name: openvscode
+    image: lscr.io/linuxserver/openvscode-server:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuching
+      - CONNECTION_TOKEN= #optional
+      - CONNECTION_SECRET= #optional
+      - SUDO_PASSWORD=password #optional
+      - SUDO_PASSWORD_HASH= #optional
+    volumes:
+      - /data/openvscode/config:/config
+    ports:
+      - 3000:3000
+    restart: unless-stopped
